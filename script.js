@@ -11,26 +11,33 @@ let pet = {
 }
 
 // Hunger decreases overtime, Decreases faster over time.
-setInterval(hungerDecrease, 10000);
+setInterval(hungerDecrease, 20000);
 function hungerDecrease(){
     const hungerVal = document.querySelector('#hunger');
     if (pet.start === true){
         if (pet.hunger > 0 && pet.hunger <= 30){
             pet.hunger = pet.hunger - Math.round(Math.random()*15);
-            hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            // hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            hungerVal.value = pet.hunger;
         }
         if (pet.hunger <= 60 && pet.hunger > 30){
             pet.hunger = pet.hunger - Math.round(Math.random()*7);
-            hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            // hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            hungerVal.value = pet.hunger;
         }
         if (pet.hunger <= 100 && pet.hunger > 60){
             pet.hunger = pet.hunger - Math.round(Math.random()*5);
-            hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            // hungerVal.textContent = `Hunger: ${pet.hunger}`;
+            hungerVal.value = pet.hunger;
         }
         if (pet.hunger <= 0){
             pet.hunger = 0
             pet.deathStatus = true;
         }
+        if (pet.hunger >= 100){
+            pet.hunger = 100;
+        }
+    return console.log(pet.hunger);
     }
 };
 
@@ -42,16 +49,17 @@ function happinessDecrease(){
     if (pet.start === true){
         if (pet.happiness > 0 && pet.happiness <= 30){
             pet.happiness = pet.happiness - Math.round(Math.random()*15);
-            happinessVal.textContent = `Happiness: ${pet.happiness}`;
+            happinessVal.value = pet.happiness;
         }
         if (pet.happiness <= 60 && pet.happiness > 30){
             pet.happiness = pet.happiness - Math.round(Math.random()*7);
-            happinessVal.textContent = `Happiness: ${pet.happiness}`;
+            happinessVal.value = pet.happiness;
         }
         if (pet.happiness <= 100 && pet.happiness > 60){
             pet.happiness = pet.happiness - Math.round(Math.random()*5);
-            happinessVal.textContent = `Happiness: ${pet.happiness}`;
+            happinessVal.value = pet.happiness;
         }
+        return console.log(pet.happiness);
         // if (pet.happiness <= 0){
         //     pet.happiness = 0
         //     pet.deathStatus = true;
@@ -68,15 +76,15 @@ function sleepDecrease(){
     if (pet.start === true){
         if (pet.sleep > 0 && pet.sleep <= 30){
             pet.sleep = pet.sleep - Math.round(Math.random()*15);
-            sleepVal.textContent = `Sleep: ${pet.sleep}`;
+            sleepVal.value = pet.sleep;
         }
         if (pet.sleep <= 60 && pet.sleep > 30){
             pet.sleep = pet.sleep - Math.round(Math.random()*7);
-            sleepVal.textContent = `Sleep: ${pet.sleep}`;
+            sleepVal.value = pet.sleep;
         }
         if (pet.sleep <= 100 && pet.sleep > 60){
-            pet.sleep = pet.happiness - Math.round(Math.random()*5);
-            sleepVal.textContent = `Sleep: ${pet.sleep}`;
+            pet.sleep = pet.sleep - Math.round(Math.random()*5);
+            sleepVal.value = pet.sleep;
         }
         // if (pet.sleep <= 0){
         //     pet.sleep = 0
@@ -86,28 +94,39 @@ function sleepDecrease(){
 };
 
 // Boredom increases over time
-setInterval(boredomIncrease, 500)
+setInterval(boredomIncrease, 30000)
 function boredomIncrease(){
-    let petStatus = document.querySelector("#status");
+    const petStatus = document.querySelector("#boredomtext");
+    const boredomVal = document.querySelector("#boredom");
 
-    if (pet.start === true){
-        if (pet.boredom>= 0 && pet.boredom < 30){
+    // if (pet.start === true){
+        if (pet.boredom >= 0 && pet.boredom < 30){
             pet.boredom = pet.boredom + Math.round(Math.random()*5);
             petStatus.textContent = `${pet.name} is doing AMAZING!`
+            boredomVal.value = pet.boredom;
         }
         if (pet.boredom >= 30  && pet.boredom < 75){
             pet.boredom = pet.boredom + Math.round(Math.random()*10);
             petStatus.textContent = `${pet.name} is getting bored!`
+            boredomVal.value = pet.boredom;
         }
         if (pet.boredom >= 75  && pet.boredom < 100){
             pet.boredom = pet.boredom + Math.round(Math.random()*15);
             petStatus.textContent = `${pet.name} is lonely! Shame on you!`
+            boredomVal.value = pet.boredom;
         }
         if (pet.boredom >= 100){
             pet.boredom = 100;
             petStatus.textContent = `${pet.name} is lonely! Shame on you!`
+            boredomVal.value = pet.boredom;
         }
+        return console.log(pet.boredom);
+// }
 }
+
+// Feeding the pet
+function hungerIncrease(){
+    pet.hunger = pet.hunger + 10;
 }
 
 
@@ -120,6 +139,9 @@ function eventHandlers(){
     
     const lastSleep = document.querySelector('#pet_sleep');
     lastSleep.addEventListener('click', lastSleep);
+
+    const feedPet = document.querySelector('#pet_feed');
+    feedPet.addEventListener('click', hungerIncrease);
 }
 
 // Updating fields that say 'Pet' to User's Pet name

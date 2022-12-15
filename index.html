@@ -2,17 +2,71 @@
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script></script>
 
+<main>
 <title>Tomagatchi</title>
 
-<h1>Tomagatchi V0.0.1</h1>
+<h1 class="head">Tomagatchi V0.0.1</h1>
 
+<div class = 'petscreen'>
 <input type="text" id="pet_name" placeholder="What would you like to name me?">
 <button id="pet_feed">Feed your pet?</button>
 <button id="pet_play">Play with your pet?</button>
 <button id="pet_sleep">Sleep?</button>
 
 
-<p id="hunger">Hunger:</p>
-<p id="sleep">Sleep:</p>
-<p id="happiness">Happiness:</p>
-<p id="status">Pet Status:</p>
+
+</div>
+
+<div class="pethunger">
+<br>
+<label class='pethunger' for="hunger">Hunger Bar</label>
+<br>
+    <meter class='pethunger'
+           id="hunger"
+           min="0" max="100"
+           low="30" optimum="70"
+           value="100">
+    </meter>
+</div>
+
+<div class="petsleep">
+<br>
+<label class='petsleep' for="sleep">Sleep Bar</label>
+    <br>
+    <meter class='petsleep'
+           id="sleep"
+           min="0" max="100"
+           low="30" optimum="70"
+           value="100">
+    </meter>
+</div>
+
+<div class="pethappiness">
+<br>
+<label class='pethappiness' for="happiness">Happiness Bar</label>
+<br>
+    <meter class='pethappiness'
+           id="happiness"
+           min="0" max="100"
+           low="30" optimum="70"
+           value="100">
+    </meter>
+<br>
+</div>
+
+<div class="petboredom">
+<br>
+<label class='petboredom' for="boredom">Boredom Bar</label>
+<br>
+    <meter class='petboredom'
+           id="boredom"
+           min="0" max="100"
+           low="30" optimum="70"
+           value="0">
+    </meter>
+<br>
+<p id="boredomtext"></p>  
+</div>
+
+
+</main>
