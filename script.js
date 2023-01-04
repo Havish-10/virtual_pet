@@ -7,11 +7,11 @@ let pet = {
     nausea: 0,
     boredom: 0,
     deathStatus: false,
-    start: false
+    start: true
 }
 
 // Hunger decreases overtime, Decreases faster over time.
-setInterval(hungerDecrease, 20000);
+setInterval(hungerDecrease, 1000);
 function hungerDecrease(){
     const hungerVal = document.querySelector('#hunger');
     if (pet.start === true){
@@ -59,7 +59,6 @@ function happinessDecrease(){
             pet.happiness = pet.happiness - Math.round(Math.random()*5);
             happinessVal.value = pet.happiness;
         }
-        return console.log(pet.happiness);
         // if (pet.happiness <= 0){
         //     pet.happiness = 0
         //     pet.deathStatus = true;
@@ -125,23 +124,63 @@ function boredomIncrease(){
 }
 
 // Feeding the pet
-function hungerIncrease(){
-    pet.hunger = pet.hunger + 10;
+function chickenHunger(){
+    if (pet.hunger < 10){
+        pet.hunger = pet.hunger + Math.round((Math.random()*20))
+        pet.happiness = pet.happiness + Math.round((Math.random()*15))
+    }
+    if (pet.hunger < 70 && pet.hunger > 30){
+        pet.hunger = pet.hunger + Math.round((Math.random()*12))
+        pet.happiness = pet.happiness + Math.round((Math.random()*10))
+    }
+    if (pet.hunger >= 70){
+        pet.hunger = pet.hunger + Math.round((Math.random()*7))
+        pet.happiness = pet.happiness + Math.round((Math.random()*5))
+    }
 }
 
+function treatHunger(){
+    if (pet.happiness < 10){
+        pet.happiness = pet.happiness + Math.round((Math.random()*15))
+        pet.hunger = pet.hunger + Math.round((Math.random()*10))
+    }
+    if (pet.happiness < 70 && pet.happiness > 30){
+        pet.happiness = pet.happiness + Math.round((Math.random()*11))
+        pet.hunger = pet.hunger + Math.round((Math.random()*7))
+    }
+    if (pet.happiness >= 70){
+        pet.happiness = pet.happiness + Math.round((Math.random()*8))
+        pet.hunger = pet.hunger + Math.round((Math.random()*4))
+    }
+}
+
+function dogFood(){
+    if (pet.hunger < 10){
+        pet.hunger = pet.hunger + Math.round((Math.random()*25))
+    }
+    if (pet.hunger < 70 && pet.hunger > 30){
+        pet.hunger = pet.hunger + Math.round((Math.random()*15))
+    }
+    if (pet.hunger >= 70){
+        pet.hunger = pet.hunger + Math.round((Math.random()*12))
+    }
+}
 
 function eventHandlers(){
     const petName = document.querySelector("#pet_name");
     petName.addEventListener('input', updateText)
-
-    const lastFed = document.querySelector('#pet_feed');
-    lastFed.addEventListener('click', lastFeed);
     
     const lastSleep = document.querySelector('#pet_sleep');
     lastSleep.addEventListener('click', lastSleep);
 
-    const feedPet = document.querySelector('#pet_feed');
-    feedPet.addEventListener('click', hungerIncrease);
+    const feedChicken = document.querySelector('#pet_feed_chicken');
+    feedChicken.addEventListener('click', chickenHunger);
+
+    const feedTreat = document.querySelector('#pet_feed_treat');
+    feedTreat.addEventListener('click', treatHunger);
+    
+    const feedFood = document.querySelector("#pet_feed_food");
+    feedFood.addEventListener('click', dogFood);
 }
 
 // Updating fields that say 'Pet' to User's Pet name
@@ -151,8 +190,6 @@ function updateText(){
     pet.name = namePet;
 
     // Updating buttons to say the pets name
-    const petFood = document.querySelector("#pet_feed");
-    petFood.textContent = `Feed ${pet.name}?`; 
 
     const petPlay = document.querySelector("#pet_play");
     petPlay.textContent = `Play with ${pet.name}?`; 
