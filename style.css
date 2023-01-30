@@ -53,3 +53,19 @@ label {
 #pet_name {
     width: 15em;
 }
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+    transform: scale(1.15); 
+}
+
+/* .bar_grow { 
+    transition: all .2s ease-in-out; 
+}
+
+.bar_grow:hover { 
+    transform: scale(1.3); 
+} */

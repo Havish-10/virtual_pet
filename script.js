@@ -7,7 +7,7 @@ let pet = {
     nausea: 0,
     boredom: 0,
     deathStatus: false,
-    start: true
+    start: false
 }
 
 // Hunger decreases overtime, Decreases faster over time.
@@ -37,7 +37,6 @@ function hungerDecrease(){
         if (pet.hunger >= 100){
             pet.hunger = 100;
         }
-    return console.log(pet.hunger);
     }
 };
 
@@ -98,7 +97,7 @@ function boredomIncrease(){
     const petStatus = document.querySelector("#boredomtext");
     const boredomVal = document.querySelector("#boredom");
 
-    // if (pet.start === true){
+    if (pet.start === true){
         if (pet.boredom >= 0 && pet.boredom < 30){
             pet.boredom = pet.boredom + Math.round(Math.random()*5);
             petStatus.textContent = `${pet.name} is doing AMAZING!`
@@ -119,8 +118,7 @@ function boredomIncrease(){
             petStatus.textContent = `${pet.name} is lonely! Shame on you!`
             boredomVal.value = pet.boredom;
         }
-        return console.log(pet.boredom);
-// }
+}
 }
 
 // Feeding the pet
@@ -166,6 +164,13 @@ function dogFood(){
     }
 }
 
+
+// Playing with the Pet
+function petPlayWalk(){
+    
+}
+
+// Event Handling
 function eventHandlers(){
     const petName = document.querySelector("#pet_name");
     petName.addEventListener('input', updateText)
@@ -181,6 +186,9 @@ function eventHandlers(){
     
     const feedFood = document.querySelector("#pet_feed_food");
     feedFood.addEventListener('click', dogFood);
+
+    const playPet = document.querySelectorAll("pet_play_walk");
+    playPet.addEventListener('click', petPlayWalk);
 }
 
 // Updating fields that say 'Pet' to User's Pet name
