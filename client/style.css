@@ -1,0 +1,96 @@
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2em 2fr 1fr;
+
+    grid-template-areas: "head head head head"
+                         "petscreen petscreen petscreen petscreen"
+                         "pethappiness pethunger petsleep petboredom";
+
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    margin: 0;
+    padding:0;
+    text-align: center;
+}
+
+.head {
+    background-color: #d3d3d3;
+}
+
+.petscreen {
+    grid-area: petscreen;
+    background-color: #d3d3d3;
+}
+
+.pethunger {
+    grid-area: pethunger;
+    background-color: rgb(42, 153, 165);
+}
+
+.petsleep {
+    grid-area: petsleep;
+    background-color: bisque;
+}
+
+.pethappiness {
+    grid-area: pethappiness;
+    background-color: blueviolet;
+}
+
+.petboredom {
+    grid-area: petboredom;
+    background-color: blanchedalmond;
+}
+
+meter {
+    width: 10.5em;
+    height: 3em;
+}
+
+
+meter::after {
+    content : attr(value);
+    top: -2em;
+    position: relative;
+    font-weight: bold;
+   }
+
+label {
+    font-family: fantasy; 
+}
+
+#pet_name {
+    width: 15em;
+}
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+    transform: scale(1.15); 
+}
+
+.visible {
+    visibility: visible;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* .bar_grow { 
+    transition: all .2s ease-in-out; 
+}
+
+.bar_grow:hover { 
+    transform: scale(1.3); 
+} */

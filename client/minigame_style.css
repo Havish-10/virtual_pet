@@ -1,0 +1,108 @@
+main {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-rows: 4em 2fr 1fr;
+
+    grid-template-areas: "head"
+                         "body"
+                         "foot";
+
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    margin: 0;
+    padding:0;
+    text-align: center;
+}
+
+.head {
+    background-color: #d3d3d3;
+}
+
+.body {
+    grid-area: body;
+    background-color: #d3d3d3;
+}
+
+.foot {
+    grid-area: foot;
+    background-color: bisque;
+}
+
+.win {
+    background-image: url(https://t3.ftcdn.net/jpg/01/73/79/26/360_F_173792623_516juhwjkCCZJ9OyesyH7hf7r9zsyH5u.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    font-size: 15em;
+    animation: fadeIn 5s;
+    z-index: 1;
+}
+
+.death {
+    background-image: url('assets/death.jpeg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    font-size: 15em;
+    animation: fadeIn 5s;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1;}
+}
+
+.blurred {
+    filter: blur(8px);
+}
+
+#word_status {
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    font-size: 5em;
+    font-weight: lighter;
+}
+
+#start_game {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;   
+    font-size: large;
+    width: 15em;
+    height: 5em;
+}
+
+button {
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    background-color: #3e68ff;
+    cursor: pointer;
+    line-height: 1.1;
+}
+
+button:hover {
+    background-color: scale-color(3e68ff, -20%);
+    transition: 220ms all ease-in-out;
+}
+
+h1 {
+    position: absolute;
+    top: 0;
+    left: 45%;
+}
+
+.hidden {
+    visibility: hidden;
+}
