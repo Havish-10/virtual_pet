@@ -3,16 +3,27 @@
 <script defer src="minigames.js"></script>
 <main>
 
-<div class="head blurred">
+<div class="head">
     <title>Minigame!</title>
-    <p id="L">hi</p>
+    <h1>Hangman!</h1>
+    <p id="guessed_letters" class="hidden"></p>
+    <section id="instructions">
+        <h4>Instructions:</h4>
+        <p>Press a button on your keyboard, Whatever button pressed is the guess made.</p>
+        <br>
+        <p>You have a fixed 6 amount of tries before the man is hung.</p>
+        <br>
+        <p>Win and experience a happy pet!</p>
+        <br>
+    </section>
 </div>
-<h1>Hangman!</h1>
 
 <div class="body blurred">
     <p id='word_status'></p>
     <img class='body' id="hangman_status" src="assets/0.jpg">
-    <p id="end"></p>
+    <img src="assets/death.jpeg" class="hidden body" id="lose">
+    <br>
+    <p id="keypress" class="body"></p>
     <button id="home"></button>
 </div>
 
