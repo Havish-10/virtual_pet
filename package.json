@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node svr.mjs --watch svr"
@@ -10,7 +11,8 @@
   "author": "Havish Patel",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "eslint": "^8.34.0",

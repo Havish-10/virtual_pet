@@ -1,15 +1,45 @@
-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2em 2fr 1fr;
+/* main {
 
-    grid-template-areas: "head head head head"
+} */
+
+/* @media only screen and (max-width: 550px) {
+    main {
+        grid-template-columns: 4fr 4fr 4fr 4fr;
+        grid-template-rows: 8em 4fr 5fr;
+        grid-template-areas: "happiness hunger sleep clean"
                          "petscreen petscreen petscreen petscreen"
-                         "pethappiness pethunger petsleep petboredom";
-
-    height: 100vh;
-    width: 100vw;
+                         "pethappiness pethunger petsleep petclean";
+    }
+    
+} */
+/* @media only screen and (min-width: 570px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 4em 2fr 0.45fr;
+    
+        grid-template-areas: "happiness hunger sleep clean"
+                             "petscreen petscreen petscreen petscreen"
+                             "pethappiness pethunger petsleep petclean";
+    
+        height: 100vh;
+        width: 100vw;
+    }
 }
+@media only screen and (max-width: 570px) {
+    main {
+        display: grid;
+        grid-template-columns: 0.45fr 1fr 1fr 0.45fr;
+        grid-template-rows: 0.45fr 2fr 2fr 0.45fr;
+    
+        grid-template-areas: "happiness petscreen petscreen pethappiness"
+                             "hunger petscreen petscreen pethunger"
+                             "sleep petscreen petscreen petsleep"
+                             "clean petscreen petscreen petclean";
+        height: 100vh;
+        width: 100vw;
+    }
+} */
 
 * {
     margin: 0;
@@ -24,39 +54,84 @@ main {
 .petscreen {
     grid-area: petscreen;
     background-color: #d3d3d3;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
 }
 
 .pethunger {
-    grid-area: pethunger;
+    /* grid-area: pethunger; */
     background-color: rgb(42, 153, 165);
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex: 1 2 auto;
 }
 
 .petsleep {
     grid-area: petsleep;
     background-color: bisque;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex: 1 1 auto;
 }
 
 .pethappiness {
     grid-area: pethappiness;
     background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex: 1 1 auto;
 }
 
-.petboredom {
-    grid-area: petboredom;
+.petclean {
+    grid-area: petclean;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.hunger {
+    grid-area: hunger;
+    background-color: rgb(42, 153, 165);
+}
+
+.sleep {
+    grid-area: sleep;
+    background-color: bisque;
+}
+
+.happiness {
+    grid-area: happiness;
+    background-color: blueviolet;
+}
+
+.clean {
+    grid-area: clean;
     background-color: blanchedalmond;
 }
 
 meter {
-    width: 10.5em;
-    height: 3em;
+    width: 11.5em;
+    height: 5em;
 }
 
 
 meter::after {
     content : attr(value);
-    top: -2em;
+    top: -1.85em;
     position: relative;
     font-weight: bold;
+    font-size: 30px;
    }
 
 label {
@@ -87,10 +162,131 @@ label {
     visibility: hidden;
 }
 
-/* .bar_grow { 
-    transition: all .2s ease-in-out; 
+input {
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: burlywood;
+    cursor: auto;
 }
 
-.bar_grow:hover { 
-    transform: scale(1.3); 
-} */
+input:hover {
+    background-color: scale-color(3e68ff, -20%);
+    transition: 220ms all ease-in-out;
+}
+
+svg {
+    outline: 3px dotted;
+    flex: 2 1 auto;
+}
+
+.body {
+    fill: #EBCCAB;
+    stroke: #444;
+    stroke-width: 0.5em;
+}
+
+.glasses {
+    fill: #EBCCAB;
+    stroke: #444;
+    stroke-width: 0.5em;
+}
+
+.ears {
+    fill: #EBCCAB;
+    stroke: #444;
+    stroke-width: 0.5em;
+}
+
+.mouth {
+    fill: transparent;
+    stroke: burlywood;
+    stroke-width: 0.5em;
+}
+
+.nose {
+    fill: transparent;
+    stroke: burlywood;
+    stroke-width: 0.5em;
+}
+
+.cute {
+    fill: red;
+    stroke: pink;
+    opacity: 0.2;
+    stroke-width: 0.5em;
+}
+
+#innerear {
+    fill: hotpink;
+    stroke: pink;
+    opacity: 0.2;
+    stroke-width: 0.5em;
+}
+
+.outereye {
+    fill: white;
+    stroke: #444;
+    stroke-width: 0.5em;
+    animation: blinking 5s infinite ease-in-out;
+}
+
+.eyeball {
+    fill: black;
+    animation: blinking 5s infinite ease-in-out;
+}
+
+@keyframes blinking {
+    0% { transform: scaleY(1); }
+    5% { transform: scaleY(0.1); }
+    10% { transform: scaleY(1); }
+    100% { transform: scaleY(1); }
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#hattoggle {
+    width: 120px;
+    height: 70px;
+}
+
+#glasstoggle {
+    width: 120px;
+    height: 70px;
+}
+
+#name {
+    width: 150px;
+    height: 30px;  
+}
+
+#logout {
+    width: 120px;
+    height: 70px;
+}
+
+#score {
+    width: 120px;
+    height: 70px;
+}
+
+.death_eyes {
+    fill: black;
+    stroke: black;
+    stroke-width: 0.5em;
+}
+
+button:disabled, button[disabled] {
+    cursor: not-allowed;
+}
+
+img {
+  max-height: 8vh;
+  min-width: 5vw;
+}
