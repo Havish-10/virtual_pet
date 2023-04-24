@@ -1,11 +1,11 @@
 'use strict';
 import { saveGame } from './script.mjs';
-import { displayValues, deathUpdate, disableButton, showButtons, changeName, deathDOM } from './dom.mjs';
+import { displayValues, deathUpdate, disableButton, showButtons, deathDOM } from './dom.mjs';
 
 // Pet Stats
 // Pet has a default name, The same as the creators pet.
 export let petStats = {
-  name: "Robert",
+  name: 'Robert',
   hunger: 100,
   happiness: 100,
   sleep: 100,
@@ -17,7 +17,7 @@ export let petStats = {
 export let xp = 0;
 
 // Loading pet stats from previous session through local storage.
-export function loadGame(name) {
+export function loadGame() {
   const locStor = localStorage.getItem('load');
   if (locStor !== 'newPet') {
     petStats = JSON.parse(localStorage.getItem(`Pet ${locStor}`));
@@ -156,11 +156,11 @@ function death() {
   if (petStats.hunger === 0 || petStats.sleep === 0) {
     deathUpdate();
     saveGame(petStats.name);
-    for (let i=0; i<100; i++) {
+    for (let i = 0; i < 100; i++) {
       window.clearInterval(i);
-    };
+    }
     deathDOM();
-  };
+  }
 }
 
 // Event Handling
@@ -194,14 +194,14 @@ export function init() {
   setInterval(sleepDecrease, 30000, 'sleep', 1);
   setInterval(cleanDecrease, 30000, 'clean', 1);
   setInterval(scoreIncrease, 1000, 'score', 1);
-  setInterval(function () { saveGame(petStats.name)}, 5000);
+  setInterval(function () { saveGame(petStats.name); }, 5000);
   setInterval(timeIncrease, 1000, 'time', 1);
 }
 
 function pageLoaded() {
   eventHandlers();
-  if (localStorage.getItem('load') !== null){
-    loadGame(); 
+  if (localStorage.getItem('load') !== null) {
+    loadGame();
   } else {
     displayValues();
     init();

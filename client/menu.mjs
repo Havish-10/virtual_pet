@@ -1,34 +1,34 @@
 'use strict';
 // Function that loads all pets and their respective stats.
-function loadStats(e) {
+function loadStats() {
   const stored = [];
   let storKey;
-  for (let i=0; storKey = localStorage.key(i); i++){
-    if (storKey.indexOf('Pet') > -1){
+  for (let i = 0; storKey === localStorage.key(i); i++) {
+    if (storKey.indexOf('Pet') > -1) {
       stored[i] = storKey;
     }
   }
 
   let users = [];
-  for (let i = 0; i < stored.length; i++){
+  for (let i = 0; i < stored.length; i++) {
     users[i] = JSON.parse(localStorage.getItem(stored[i]));
-    if (users[i] !== null){
+    if (users[i] !== null) {
       userLoad(users[i]);
     }
-  }  
+  }
   users = users.filter(e => e !== null);
 }
 
 // Function that creates and presents sections for each user.
-function userLoad(user){
+function userLoad(user) {
   const section = document.createElement('section');
   const btn = document.createElement('a');
   btn.textContent = 'Select';
   btn.setAttribute('id', `${user.name}`);
-  btn.href = `/pet`;
+  btn.href = '/pet';
   section.setAttribute('id', `${user.name}`);
 
-  for (const [key, value] of Object.entries(user).filter(([key, value]) => key !== 'time')){
+  for (const [key, value] of Object.entries(user).filter(([key, value]) => key !== 'time')) {
     const para = document.createElement('p');
     para.textContent = `${key}: ${value}`.charAt(0).toUpperCase() + `${key}: ${value}`.slice(1);
     section.appendChild(para);
@@ -38,7 +38,7 @@ function userLoad(user){
 }
 
 // Function that determines whether the pet is to be a Fresh Pet or an existing one.
-function redirect(e){
+function redirect(e) {
   if (e.target.id !== 'newPet') {
     localStorage.setItem('load', e.target.id);
   } else {
@@ -67,7 +67,7 @@ function eventHandlers() {
   }
 }
 
-function pageLoaded(){
+function pageLoaded() {
   userCreate();
   loadStats();
   eventHandlers();

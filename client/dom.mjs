@@ -1,12 +1,12 @@
 'use strict';
 import { saveGame } from './script.mjs';
-import { petStats, init } from './stats.mjs';
+import { petStats } from './stats.mjs';
 
 // // Displaying pet values.
 export function displayValues() {
-  for (const [attr, value] of Object.entries(petStats).filter(([key, value]) => key !== 'time')){
+  for (const [attr, value] of Object.entries(petStats).filter(([key, value]) => key !== 'time')) {
     const output = document.querySelector(`#${attr}`);
-    if (output){
+    if (output) {
       output.value = value;
       output.textContent = `${value}`;
     }
@@ -36,7 +36,7 @@ export function deathUpdate() {
   for (const btn of btns) {
     btn.disabled = true;
     btn.classList.remove('grow');
-  };
+  }
 }
 
 // Disables buttons after being clicked.
@@ -63,20 +63,20 @@ export function showButtons() {
 
 // Function that sets pet name.
 export function changeName(e) {
-  const rename = document.querySelector("#rename");
+  const rename = document.querySelector('#rename');
   if (e.target.value !== '') {
-    if (localStorage.getItem(`Pet ${e.target.value}`) !== null){
-      rename.textContent = "Name Already In Use";
+    if (localStorage.getItem(`Pet ${e.target.value}`) !== null) {
+      rename.textContent = 'Name Already In Use';
     }
 
-    if (localStorage.getItem(`Pet ${e.target.value}`) === null){
+    if (localStorage.getItem(`Pet ${e.target.value}`) === null) {
       petStats.name = e.target.value;
       saveGame(petStats.name);
       displayValues();
-      rename.textContent = "Rename your pet?";
-    } 
+      rename.textContent = 'Rename your pet?';
+    }
 
-    if (rename.textContent = "Rename your pet?") {
+    if (rename.textContent === 'Rename your pet?') {
       localStorage.removeItem(`Pet ${petStats.name}`);
       localStorage.removeItem(`xp ${petStats.name}`);
     }
@@ -96,10 +96,9 @@ export function deathDOM() {
   }
 
   const sect = document.createElement('section');
-  for (let [key, value] of Object.entries(petStats)){
-
+  for (let [key, value] of Object.entries(petStats)) {
     if (key === 'time') {
-      value = `${Math.round(petStats.time / 60)} Min ${Math.round(((petStats.time / 60) - Math.round(petStats.time / 60)) * 60)} Sec` 
+      value = `${Math.round(petStats.time / 60)} Min ${Math.round(((petStats.time / 60) - Math.round(petStats.time / 60)) * 60)} Sec`;
     }
     const para = document.createElement('p');
     para.textContent = `${key}: ${value}`.charAt(0).toUpperCase() + `${key}: ${value}`.slice(1);
