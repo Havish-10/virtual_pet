@@ -13,6 +13,5 @@ function showMenu(req, res){
 
 app.get('/pet', showApp);
 app.get('/', showMenu)
-app.get('/stats', getStats);
 
 app.listen(8080);

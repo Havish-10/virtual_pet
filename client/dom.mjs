@@ -99,7 +99,7 @@ export function deathDOM() {
   for (let [key, value] of Object.entries(petStats)){
 
     if (key === 'time') {
-      value = Math.round(value / 60000) + ' Minutes';
+      value = `${Math.round(petStats.time / 60)} Min ${Math.round(((petStats.time / 60) - Math.round(petStats.time / 60)) * 60)} Sec` 
     }
     const para = document.createElement('p');
     para.textContent = `${key}: ${value}`.charAt(0).toUpperCase() + `${key}: ${value}`.slice(1);

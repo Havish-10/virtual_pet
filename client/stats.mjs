@@ -12,7 +12,7 @@ export let petStats = {
   clean: 100,
   score: 0,
   level: 1,
-  time: Date.now(),
+  time: 0,
 };
 export let xp = 0;
 
@@ -34,6 +34,11 @@ export function loadGame(name) {
 function scoreIncrease(attr, value) {
   petStats[attr] = petStats[attr] + value;
   displayValues();
+}
+
+// Increasing time survived every second.
+function timeIncrease(attr, value) {
+  petStats[attr] = petStats[attr] + value;
 }
 
 // Hunger decreases overtime, Decreases faster the more the pet is interacted with.
@@ -190,6 +195,7 @@ export function init() {
   setInterval(cleanDecrease, 30000, 'clean', 1);
   setInterval(scoreIncrease, 1000, 'score', 1);
   setInterval(function () { saveGame(petStats.name)}, 5000);
+  setInterval(timeIncrease, 1000, 'time', 1);
 }
 
 function pageLoaded() {
