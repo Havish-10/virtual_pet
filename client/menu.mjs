@@ -1,6 +1,6 @@
 'use strict';
 // Function that loads all pets and their respective stats.
-export function loadStats(e) {
+function loadStats(e) {
   const stored = [];
   let storKey;
   for (let i=0; storKey = localStorage.key(i); i++){
