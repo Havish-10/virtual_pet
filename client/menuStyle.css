@@ -1,0 +1,72 @@
+:root {
+    --display: block;
+    --columns: 1fr;
+    --rows: 1fr;
+    --areas: none;
+  
+    --all: span;
+    --border: black thin solid;
+    --pad: 0em;
+    --align: center;
+}
+
+@media (480px < width <= 768px) {
+    :root {
+      --display: grid;
+      --columns: 1fr 1fr;
+      --rows: 1fr 1fr;
+  
+      --areas: "newPet newPet"
+      "body body";
+    }
+}
+
+main {
+    padding: var(--pad);
+    margin: 0 auto;
+    display: var(--display);
+    grid-template-columns: var(--columns);
+    grid-template-rows: var(--rows);
+    grid-template-areas: var(--areas);
+    gap: var(--gap);
+    justify-content: center;
+    background-color: rgba(187, 255, 0, 0.2);
+}
+
+section {
+    grid-area: body;
+    text-align: center;
+    outline: 5px solid deeppink;
+    background-color: rgba(201, 76, 76, 0.2);
+    border-radius: 30px;
+}
+
+.newPet {
+    grid-area: head;
+}
+
+section > div {
+    display: inline-block;
+}
+
+p {
+    font-family: 'Aclonica';
+    font-size: medium;
+}
+
+a {
+    font-size: large;
+    color: red;
+    text-decoration: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover {
+    color: hotpink;
+    cursor: pointer;
+}
+
+body {
+    background-color: antiquewhite;
+}
