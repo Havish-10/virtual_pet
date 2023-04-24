@@ -1,3 +1,4 @@
+'use strict';
 // Function that loads all pets and their respective stats.
 export function loadStats(e) {
   const stored = [];
@@ -57,7 +58,6 @@ function userCreate() {
   section.appendChild(btn);
   document.body.appendChild(section);
 }
-
 
 // Event Handling
 function eventHandlers() {

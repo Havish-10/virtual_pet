@@ -335,6 +335,7 @@ img {
     height: var(--featH);
     padding-right: 20px;
     padding-left: 20px;
+    border-radius: 10px;
 }
 
 #levelScore {

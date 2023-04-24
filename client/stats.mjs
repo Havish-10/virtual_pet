@@ -1,3 +1,4 @@
+'use strict';
 import { saveGame } from './script.mjs';
 import { displayValues, deathUpdate, disableButton, showButtons, changeName, deathDOM } from './dom.mjs';
 
@@ -129,9 +130,9 @@ function petPlayFetch(e) {
 // Function that increases cleanliness value.
 function cleanIncrease() {
   petStats.clean = Math.min(petStats.clean + 30, 100);
-  sleepDecrease('sleep', 20);
+  // sleepDecrease('sleep', 20);
   displayValues();
-  xpIncrease(7);
+  xpIncrease(70);
 }
 
 // Function to handle XP values and levels.
@@ -143,7 +144,6 @@ function xpIncrease(val) {
     petStats.score = petStats.score + 50;
     showButtons();
   }
-  console.log(xp);
 }
 
 // Function that deals with the pets death status.

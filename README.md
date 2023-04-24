@@ -48,6 +48,12 @@ Tomagatchi Pet Coursework UOP 2023
 * Additional Accessories for the Pet
 * Minigames Update that will include a better assortment of such, with actual playability.
 * The Ability to select and scroll through different pet varieties
+* Improved death screen.
+
+## Storage
+
+* Users are saved with local storage
+* The menu system works with a simple Key and fetch path, A key is given that represents each pet and when pet is selected, Key is retrieved.
 
 ## `http://127.0.0.1:8080/pet` will take the user to the LAST LOADED pet, If no pet exists it will create a new one.
 ## `http://127.0.0.1:8080/` will take the user to the MENU page to select a pet, if no pets exist there is a NEW PET button
